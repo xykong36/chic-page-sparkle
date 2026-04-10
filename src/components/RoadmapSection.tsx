@@ -33,7 +33,7 @@ const RoadmapSection = () => (
           transition={{ delay: i * 0.06 }}
           className="flex items-center gap-2 shrink-0"
         >
-          <div className="glass-card rounded-2xl p-4 text-center hover-lift cursor-pointer min-w-[120px] group">
+          <div className="rounded-2xl p-4 text-center hover-lift cursor-pointer min-w-[120px] group border border-border/30 bg-gradient-to-b from-accent/40 to-transparent">
             <div className="text-3xl mb-2 group-hover:animate-float">{item.icon}</div>
             <span className="text-[10px] font-bold text-primary">{item.id}</span>
             <h3 className="text-sm font-bold text-foreground">{item.title}</h3>
