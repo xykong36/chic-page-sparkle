@@ -119,15 +119,6 @@ const RoadmapSection = () => {
                 </span>
               </div>
 
-              <div className="flex items-center gap-1 mb-1">
-                {Array.from({ length: 5 }).map((_, si) => (
-                  <Star
-                    key={si}
-                    className={`w-4 h-4 ${si < selected.stars ? "text-primary fill-primary" : "text-muted-foreground/30"}`}
-                  />
-                ))}
-                <span className="text-xs text-muted-foreground ml-1">难度</span>
-              </div>
 
               <p className="text-sm text-foreground/80 leading-relaxed">{selected.details}</p>
 
