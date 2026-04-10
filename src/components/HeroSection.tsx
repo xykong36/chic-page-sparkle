@@ -33,20 +33,6 @@ const HeroSection = () => (
           以职业时间线为主轴，从面试拿 Offer 到向上管理，7 大模块覆盖真实职场全场景。每课聚焦一个具体能力，学完即用。
         </p>
 
-        <div className="flex items-end gap-10">
-          {stats.map((s, i) => (
-            <motion.div
-              key={s.label}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + i * 0.1 }}
-              className="text-center"
-            >
-              <div className="text-4xl font-black text-foreground">{s.value}</div>
-              <div className="text-xs text-muted-foreground mt-1">{s.label}</div>
-            </motion.div>
-          ))}
-        </div>
       </motion.div>
 
       {/* Right - Clean 2x2 grid */}
