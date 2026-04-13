@@ -120,6 +120,7 @@ const CourseGrid = () => {
               )}
               <div className={viewMode === "grid" ? "p-3" : ""}>
                 <h4 className="text-xs font-semibold text-foreground leading-snug line-clamp-2">
+                  <span className="text-muted-foreground font-mono mr-1">EP{String(i + 1).padStart(2, '0')}</span>
                   {course.title}
                 </h4>
                 <p className="text-[10px] text-muted-foreground mt-1">{course.sub}</p>
