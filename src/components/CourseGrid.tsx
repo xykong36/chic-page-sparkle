@@ -52,7 +52,7 @@ const CourseGrid = () => {
               className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
                 activeTab === i
                   ? "gradient-coral text-primary-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  : "bg-muted text-muted-foreground hover:text-foreground hover:bg-muted/80"
               }`}
             >
               {tab.label} <span className="text-[10px] opacity-70">{tab.count}</span>
