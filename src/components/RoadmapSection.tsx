@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, Clock, ChevronRight, X } from "lucide-react";
+import { BookOpen, Clock, ChevronRight, ChevronLeft, X } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 const roadmap = [
   {
@@ -50,6 +51,13 @@ const roadmap = [
 
 const RoadmapSection = () => {
   const [selected, setSelected] = useState<typeof roadmap[0] | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (dir: 'left' | 'right') => {
+    if (!scrollRef.current) return;
+    const cardWidth = scrollRef.current.offsetWidth / 4;
+    scrollRef.current.scrollBy({ left: dir === 'left' ? -cardWidth : cardWidth, behavior: 'smooth' });
+  };
 
   return (
     <section className="max-w-6xl mx-auto px-6 py-10">
@@ -58,13 +66,23 @@ const RoadmapSection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-          🗺️ <span>Learning Roadmap</span>
-          <span className="text-sm font-normal text-muted-foreground">— 从入场到掌控的职场英语成长路径</span>
-        </h2>
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-xl font-bold flex items-center gap-2">
+            🗺️ <span>Learning Roadmap</span>
+            <span className="text-sm font-normal text-muted-foreground">— 从入场到掌控的职场英语成长路径</span>
+          </h2>
+          <div className="flex gap-1.5">
+            <Button variant="outline" size="icon" className="h-8 w-8 rounded-full" onClick={() => scroll('left')}>
+              <ChevronLeft className="w-4 h-4" />
+            </Button>
+            <Button variant="outline" size="icon" className="h-8 w-8 rounded-full" onClick={() => scroll('right')}>
+              <ChevronRight className="w-4 h-4" />
+            </Button>
+          </div>
+        </div>
       </motion.div>
 
-      <div className="overflow-x-auto pb-4 -mx-6 px-6 scrollbar-thin">
+      <div ref={scrollRef} className="overflow-x-auto pb-4 -mx-6 px-6 scrollbar-thin scroll-smooth">
         <div className="flex gap-3" style={{ minWidth: 'max-content' }}>
           {roadmap.map((item, i) => (
             <motion.div
