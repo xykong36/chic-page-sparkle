@@ -106,7 +106,7 @@ const CourseGrid = () => {
               }
             >
               {viewMode === "grid" && (
-                <div className="aspect-[4/3] bg-gradient-to-br from-muted to-secondary flex items-center justify-center relative">
+                <div className="aspect-[4/3] bg-gradient-to-br from-[hsl(12,80%,55%)]/10 via-[hsl(25,90%,55%)]/5 to-[hsl(38,90%,55%)]/10 flex items-center justify-center relative">
                   <span className="text-4xl group-hover:scale-110 transition-transform">💼</span>
                   <span className="absolute top-2 left-2 text-[10px] bg-card/90 backdrop-blur px-1.5 py-0.5 rounded font-mono text-muted-foreground">
                     {course.id}
