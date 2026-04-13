@@ -69,7 +69,7 @@ const RoadmapSection = () => {
         viewport={{ once: true }}
       >
         <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-          🗺️ <span>Learning Roadmap</span>
+          🗺️ <span>学习路线图</span>
           <span className="text-sm font-normal text-muted-foreground">— 从入场到掌控的职场英语成长路径</span>
         </h2>
       </motion.div>
