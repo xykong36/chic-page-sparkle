@@ -51,7 +51,7 @@ const HeroSection = () => (
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3 + i * 0.07 }}
-              className="glass-card rounded-2xl p-5 hover-lift cursor-pointer group"
+              className={`glass-card rounded-2xl p-5 hover-lift cursor-pointer group ${modules.length % 2 !== 0 && i === modules.length - 1 ? 'col-span-2' : ''}`}
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl gradient-coral flex items-center justify-center text-lg shadow-sm">
