@@ -1,8 +1,7 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, Clock, ChevronRight, ChevronLeft, X } from "lucide-react";
+import { BookOpen, Clock, ChevronRight, X } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 
 const roadmap = [
   {
@@ -51,13 +50,6 @@ const roadmap = [
 
 const RoadmapSection = () => {
   const [selected, setSelected] = useState<typeof roadmap[0] | null>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (dir: 'left' | 'right') => {
-    if (!scrollRef.current) return;
-    const cardWidth = scrollRef.current.offsetWidth / 4;
-    scrollRef.current.scrollBy({ left: dir === 'left' ? -cardWidth : cardWidth, behavior: 'smooth' });
-  };
 
   return (
     <section className="max-w-6xl mx-auto px-6 py-10">
@@ -66,43 +58,31 @@ const RoadmapSection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl font-bold flex items-center gap-2">
-            🗺️ <span>Learning Roadmap</span>
-            <span className="text-sm font-normal text-muted-foreground">— 从入场到掌控的职场英语成长路径</span>
-          </h2>
-          <div className="flex gap-1.5">
-            <Button variant="outline" size="icon" className="h-8 w-8 rounded-full" onClick={() => scroll('left')}>
-              <ChevronLeft className="w-4 h-4" />
-            </Button>
-            <Button variant="outline" size="icon" className="h-8 w-8 rounded-full" onClick={() => scroll('right')}>
-              <ChevronRight className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
+        <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
+          🗺️ <span>Learning Roadmap</span>
+          <span className="text-sm font-normal text-muted-foreground">— 从入场到掌控的职场英语成长路径</span>
+        </h2>
       </motion.div>
 
-      <div ref={scrollRef} className="overflow-x-auto pb-4 -mx-6 px-6 scrollbar-thin scroll-smooth">
-        <div className="flex gap-3" style={{ minWidth: 'max-content' }}>
-          {roadmap.map((item, i) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.06 }}
-              onClick={() => setSelected(item)}
-              className="w-[calc((100%-36px)/4)] min-w-[200px] shrink-0 rounded-2xl p-5 text-center hover-lift cursor-pointer group border border-border/40 bg-gradient-to-b from-primary/5 to-accent/10 hover:from-primary/10 hover:to-accent/20 hover:border-primary/30 transition-all"
-            >
-              <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">{item.icon}</div>
-              <h3 className="text-sm font-bold text-foreground mb-1">{item.title}</h3>
-              <p className="text-[11px] text-muted-foreground mb-3">{item.desc}</p>
-              <span className="inline-block text-[10px] font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full mb-3">
-                {item.tag}
-              </span>
-            </motion.div>
-          ))}
-        </div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-3">
+        {roadmap.map((item, i) => (
+          <motion.div
+            key={item.id}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.06 }}
+            onClick={() => setSelected(item)}
+            className="rounded-2xl p-5 text-center hover-lift cursor-pointer group border border-border/40 bg-gradient-to-b from-primary/5 to-accent/10 hover:from-primary/10 hover:to-accent/20 hover:border-primary/30 transition-all"
+          >
+            <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">{item.icon}</div>
+            <h3 className="text-sm font-bold text-foreground mb-1">{item.title}</h3>
+            <p className="text-[11px] text-muted-foreground mb-3">{item.desc}</p>
+            <span className="inline-block text-[10px] font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full mb-3">
+              {item.tag}
+            </span>
+          </motion.div>
+        ))}
       </div>
 
       <Dialog open={!!selected} onOpenChange={(open) => !open && setSelected(null)}>
