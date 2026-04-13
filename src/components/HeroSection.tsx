@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const stats = [
   { value: "7", label: "核心模块" },
@@ -44,34 +45,36 @@ const HeroSection = () => (
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.15 }}
       >
-        <div className="grid grid-cols-2 gap-3 auto-rows-fr">
-          {modules.map((m, i) => (
-            <motion.div
-              key={m.id}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3 + i * 0.07 }}
-              className={`glass-card rounded-2xl p-5 hover-lift cursor-pointer group ${modules.length % 2 !== 0 && i === modules.length - 1 ? 'col-span-2' : ''}`}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl gradient-coral flex items-center justify-center text-lg shadow-sm">
-                  {m.icon}
+        <ScrollArea className="h-[340px] rounded-2xl pr-3">
+          <div className="grid grid-cols-2 gap-3 auto-rows-fr">
+            {modules.map((m, i) => (
+              <motion.div
+                key={m.id}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3 + i * 0.07 }}
+                className={`glass-card rounded-2xl p-5 hover-lift cursor-pointer group ${modules.length % 2 !== 0 && i === modules.length - 1 ? 'col-span-2' : ''}`}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-xl gradient-coral flex items-center justify-center text-lg shadow-sm">
+                    {m.icon}
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-bold text-primary tracking-wider">{m.id}</span>
+                    <h3 className="text-sm font-bold text-foreground leading-tight">{m.title}</h3>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-[10px] font-bold text-primary tracking-wider">{m.id}</span>
-                  <h3 className="text-sm font-bold text-foreground leading-tight">{m.title}</h3>
+                <div className="flex items-center justify-between text-[11px] text-muted-foreground mb-1.5">
+                  <span>{m.hours} 课时</span>
+                  <span>0%</span>
                 </div>
-              </div>
-              <div className="flex items-center justify-between text-[11px] text-muted-foreground mb-1.5">
-                <span>{m.hours} 课时</span>
-                <span>0%</span>
-              </div>
-              <div className="h-1.5 bg-muted rounded-full overflow-hidden">
-                <div className="h-full gradient-coral rounded-full w-0" />
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                <div className="h-1.5 bg-muted rounded-full overflow-hidden">
+                  <div className="h-full gradient-coral rounded-full w-0" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </ScrollArea>
       </motion.div>
     </div>
   </section>
