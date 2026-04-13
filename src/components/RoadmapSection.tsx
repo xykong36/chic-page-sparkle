@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, BookOpen, Clock, ChevronRight, X } from "lucide-react";
+import { BookOpen, Clock, ChevronRight, X } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 const roadmap = [
@@ -81,14 +81,6 @@ const RoadmapSection = () => {
             <span className="inline-block text-[10px] font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full mb-3">
               {item.tag}
             </span>
-            <div className="flex items-center justify-center gap-0.5">
-              {Array.from({ length: 5 }).map((_, si) => (
-                <Star
-                  key={si}
-                  className={`w-3 h-3 ${si < item.stars ? "text-primary fill-primary" : "text-muted-foreground/30"}`}
-                />
-              ))}
-            </div>
           </motion.div>
         ))}
       </div>
