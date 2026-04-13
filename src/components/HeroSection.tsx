@@ -11,6 +11,9 @@ const modules = [
   { id: "M2", title: "职场社交", icon: "☕", hours: 12 },
   { id: "M3", title: "日常沟通", icon: "💬", hours: 13 },
   { id: "M4", title: "会议沟通", icon: "🎯", hours: 13 },
+  { id: "M5", title: "演示汇报", icon: "📊", hours: 12 },
+  { id: "M6", title: "影响与决策", icon: "🔄", hours: 10 },
+  { id: "M7", title: "向上管理", icon: "⬆️", hours: 8 },
 ];
 
 const HeroSection = () => (
@@ -41,14 +44,14 @@ const HeroSection = () => (
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.15 }}
       >
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-3 auto-rows-fr">
           {modules.map((m, i) => (
             <motion.div
               key={m.id}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3 + i * 0.07 }}
-              className="glass-card rounded-2xl p-5 hover-lift cursor-pointer group"
+              className={`glass-card rounded-2xl p-5 hover-lift cursor-pointer group ${modules.length % 2 !== 0 && i === modules.length - 1 ? 'col-span-2' : ''}`}
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl gradient-coral flex items-center justify-center text-lg shadow-sm">
