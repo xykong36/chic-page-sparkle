@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, Clock, ChevronRight, X } from "lucide-react";
+import { BookOpen, Clock, ChevronRight, ChevronLeft, X } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 const roadmap = [
   {
