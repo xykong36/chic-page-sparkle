@@ -69,7 +69,7 @@ const HeroSection = () => (
                   <span>0%</span>
                 </div>
                 <div className="h-1.5 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full gradient-coral rounded-full w-0" />
+                  <div className={`h-1.5 rounded-full overflow-hidden bg-gradient-to-r ${m.color} w-0`} />
                 </div>
               </motion.div>
             ))}
