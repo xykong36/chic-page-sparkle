@@ -8,13 +8,13 @@ const stats = [
 ];
 
 const modules = [
-  { id: "M1", title: "英语面试", icon: "💼", hours: 25 },
-  { id: "M2", title: "职场社交", icon: "☕", hours: 12 },
-  { id: "M3", title: "日常沟通", icon: "💬", hours: 13 },
-  { id: "M4", title: "会议沟通", icon: "🎯", hours: 13 },
-  { id: "M5", title: "演示汇报", icon: "📊", hours: 12 },
-  { id: "M6", title: "影响与决策", icon: "🔄", hours: 10 },
-  { id: "M7", title: "向上管理", icon: "⬆️", hours: 8 },
+  { id: "M1", title: "英语面试", icon: "💼", hours: 25, color: "from-[hsl(12,80%,55%)] to-[hsl(25,90%,55%)]" },
+  { id: "M2", title: "职场社交", icon: "☕", hours: 12, color: "from-[hsl(38,90%,55%)] to-[hsl(45,95%,60%)]" },
+  { id: "M3", title: "日常沟通", icon: "💬", hours: 13, color: "from-[hsl(175,60%,45%)] to-[hsl(150,50%,45%)]" },
+  { id: "M4", title: "会议沟通", icon: "🎯", hours: 13, color: "from-[hsl(210,70%,55%)] to-[hsl(220,80%,60%)]" },
+  { id: "M5", title: "演示汇报", icon: "📊", hours: 12, color: "from-[hsl(270,50%,55%)] to-[hsl(280,60%,60%)]" },
+  { id: "M6", title: "影响与决策", icon: "🔄", hours: 10, color: "from-[hsl(340,75%,55%)] to-[hsl(350,80%,60%)]" },
+  { id: "M7", title: "向上管理", icon: "⬆️", hours: 8, color: "from-[hsl(28,90%,55%)] to-[hsl(38,90%,55%)]" },
 ];
 
 const HeroSection = () => (
@@ -56,7 +56,7 @@ const HeroSection = () => (
                 className={`glass-card rounded-2xl p-5 hover-lift cursor-pointer group ${modules.length % 2 !== 0 && i === modules.length - 1 ? 'col-span-2' : ''}`}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl gradient-coral flex items-center justify-center text-lg shadow-sm">
+                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${m.color} flex items-center justify-center text-lg shadow-sm`}>
                     {m.icon}
                   </div>
                   <div>
